@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результат миссии</title>
+</head>
+<body style="background-color:#fff5ee; font-family:Arial, sans-serif; color:#333;">
+
+<h2 style="color:#ff4500;">{{ result }}</h2>
+<p>Навык: {{ mission.skill.name }} — Level {{ user_skill.level }} (XP: {{ user_skill.xp }})</p>
+
+<a href="{% url 'skill_detail' mission.skill.id %}">Вернуться к миссиям</a>
+
+</body>
+</html>

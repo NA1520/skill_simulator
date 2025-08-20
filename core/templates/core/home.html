@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+<div class="form-card" id="register-form">
+    <h2>Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background:#32cd32; color:white;">Зарегистрироваться</button>
+    </form>
+</div>
+<hr>
+{% endif %}
+
+<h2 style="text-align:center; margin:30px 0;">Выберите навык</h2>
+<div class="flex-center">
+    {% for skill in skills %}
+    <a href="{% url 'skill_detail' skill.id %}?theme={{ theme }}" class="card" style="width:220px; text-align:center; color:#fff; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); font-weight:bold; font-size:18px;">
+        {{ skill.name }}
+    </a>
+    {% empty %}
+    <p>Нет навыков</p>
+    {% endfor %}
+</div>
+{% endblock %}

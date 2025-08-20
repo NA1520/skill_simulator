@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width:500px; margin:auto;">
+    <h2>Профиль: {{ user.username }}</h2>
+    <p>Роль: {{ user.role }}</p>
+
+    <h3>Мои навыки</h3>
+    <ul>
+        {% for us in user.user_skills.all %}
+        <li>{{ us.skill.name }} — Уровень {{ us.level }}, XP: {{ us.xp }}</li>
+        {% empty %}
+        <li>У тебя пока нет навыков.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

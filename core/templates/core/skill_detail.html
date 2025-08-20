@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block title %}{{ skill.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ skill.name }}</h2>
+<p>{{ skill.description }}</p>
+
+<h3>Миссии</h3>
+<div class="flex-center">
+    {% for mission in missions %}
+    <a href="{% url 'mission_detail' mission.id %}?theme={{ theme }}" class="card" style="flex:1 1 250px; text-align:center; color:#fff; background: linear-gradient(45deg, #ff7e5f, #feb47b); font-weight:bold;">
+        {{ mission.title }}
+    </a>
+    {% empty %}
+    <p>Нет миссий</p>
+    {% endfor %}
+</div>
+{% endblock %}
